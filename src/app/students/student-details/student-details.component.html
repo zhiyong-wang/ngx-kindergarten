@@ -1,0 +1,113 @@
+<p>student-details works!</p>
+<div class="main">
+<div class="view">
+   <div class="view-title">入园登记 </div>
+
+   <div  class="view-content">
+
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="form-content">
+
+    <div class="row">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="姓名"  formControlName="name" required>
+        <mat-error *ngIf="studentForm.get('name').invalid">必须填写姓名！</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="性别"  formControlName="sex" required>
+        <mat-option value='男'>男</mat-option>
+        <mat-option value='女'>女</mat-option>
+        </mat-select>
+        <mat-error *ngIf="studentForm.get('name').invalid">必须选择性别！</mat-error>
+    </mat-form-field>
+    </div>
+    <mat-form-field class="row-full-width">
+        <input matInput placeholder="身份证号码"  formControlName="id_number" required >
+        <mat-error *ngIf="studentForm.get('id_number').invalid">{{getErrorMessage("id_number")}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="row-full-width">
+        <input matInput placeholder="家庭住址"  formControlName="address" required>
+        <mat-error *ngIf="studentForm.get('address').invalid">必须填写家庭住址！</mat-error>
+    </mat-form-field>  
+
+    <div class="row">
+    <mat-form-field class="row-full-width">
+        <mat-select placeholder="联系人关系"  formControlName="contacts1" required>       
+            <mat-option value="父亲" >父亲</mat-option >
+            <mat-option value="母亲" >母亲</mat-option >
+            <mat-option value="祖父" >祖父</mat-option >
+            <mat-option value="祖母" >祖母</mat-option >  
+            <mat-option value="其他" >其他</mat-option >
+            </mat-select>
+        <mat-error *ngIf="studentForm.get('contacts1').invalid">必须填写联系人！</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="row-full-width">     
+       <input matInput placeholder="联系人姓名"  formControlName="con1_name" required>
+       <mat-error *ngIf="studentForm.get('con1_name').invalid">必须填写联系人姓名！</mat-error>
+    </mat-form-field>
+   
+    <mat-form-field class="row-full-width" >
+       <input matInput placeholder="联系人电话" formControlName="con1_phone" required>
+       <mat-error *ngIf="studentForm.get('con1_phone').invalid">{{getErrorMessage("con1_phone")}}</mat-error>
+    </mat-form-field>
+    </div>
+
+    <div class="row">
+    <mat-form-field class="row-full-width">
+        <mat-select placeholder="第二联系人关系" formControlName="contacts2">
+            <mat-option value="父亲" >父亲</mat-option >
+            <mat-option value="母亲" >母亲</mat-option >
+            <mat-option value="祖父" >祖父</mat-option >
+            <mat-option value="祖母" >祖母</mat-option >  
+            <mat-option value="其他" >其他</mat-option >
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="row-full-width" >
+        <input matInput placeholder="联系人姓名" formControlName="con2_name">
+      
+    </mat-form-field>
+
+    <mat-form-field class="row-full-width">
+        <input matInput placeholder="联系人电话"  formControlName="con2_phone">
+        <mat-error *ngIf="studentForm.get('con2_phone').invalid">{{getErrorMessage("con2_phone")}}</mat-error>
+    </mat-form-field>
+    </div>
+
+    <div class="row">
+    <mat-form-field class="row-full-width">   
+        <input matInput  placeholder="学费标准"  formControlName="tuition" required>
+        <mat-error *ngIf="studentForm.get('tuition').invalid">{{getErrorMessage("tuition")}}</mat-error>
+
+    </mat-form-field>
+    <mat-form-field class="row-full-width">   
+        <input matInput placeholder="入园押金"  formControlName="deposit" required>
+        <mat-error *ngIf="studentForm.get('deposit').invalid">{{getErrorMessage("deposit")}}</mat-error>
+    </mat-form-field>
+    </div>
+    <div class="row">
+    <mat-form-field class="row-full-width">   
+        <mat-select placeholder="班级"  formControlName="classId" required>
+        <mat-option value="000000" >未分配</mat-option>
+        <mat-option value={{item.id}} *ngFor="let item of classes">{{item.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="studentForm.get('classId').invalid">必须选择班级！</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="row-full-width">  
+        <input matInput [matDatepicker]="dp" placeholder="入园日期" formControlName="enter_date"  required >
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+        <mat-error *ngIf="studentForm.get('enter_date').invalid">必须填写入园日期！</mat-error>
+      </mat-form-field>
+  </div>
+<button type="submit" [disabled]="!studentForm.valid">Submit</button>
+</form>
+
+<p>{{studentForm.value | json }}</p>
+<p>{{studentForm.valid}}</p>
+</div>
+</div>
+</div>

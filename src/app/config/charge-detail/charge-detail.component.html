@@ -1,0 +1,77 @@
+
+<div class="main">
+    <div class="view">
+       <div class="view-title">收费设置 </div>
+    
+       <div  class="view-content">
+    
+        <form [formGroup]="chargeForm" (ngSubmit)="onSubmit()" class="form-content">
+    
+
+        <mat-form-field class="row-full-width">
+            <input matInput placeholder="名称"  formControlName="name" required>
+            <mat-error *ngIf="chargeForm.get('name').invalid">必须填写姓名！</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="row-full-width">
+            <mat-select placeholder="是否是入园时缴纳"  formControlName="isStart" required>       
+                <mat-option value=true >是</mat-option >
+                <mat-option value=false >否</mat-option >
+                </mat-select>
+            <mat-error *ngIf="chargeForm.get('isStart').invalid">必须选择！</mat-error>
+        </mat-form-field>
+
+
+        <div class="row-full-width">
+        <label>缴费范围: </label>
+            <mat-radio-group  formControlName="isAll" required>
+                <mat-radio-button value="all">全部缴纳 </mat-radio-button>
+                <mat-radio-button value="part">部分班级缴纳 </mat-radio-button>
+                <mat-radio-button value="bySelf">自愿缴纳 </mat-radio-button>
+                </mat-radio-group>
+             <mat-error *ngIf="chargeForm.get('isAll').invalid">必须选择！</mat-error>
+            </div>
+
+            
+      <mat-form-field class="row-full-width" *ngIf="chargeForm.get('isAll').value=='part'">
+         <mat-select placeholder="选择班级" formControlName="selectClass" multiple>
+        <mat-option value={{item.id}} *ngFor="let item of classes">{{item.name}}</mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
+        <mat-form-field class="row-full-width">     
+            <input matInput placeholder="缴费标准"  formControlName="charge" required>
+            <mat-error *ngIf="chargeForm.get('charge').invalid">必须填写缴费标准！</mat-error>
+         </mat-form-field>
+       
+
+    
+        <mat-form-field class="row-full-width" *ngIf="chargeForm.get('isStart').value=='false'">  
+            <input matInput [matDatepicker]="dp" placeholder="限缴日期" formControlName="paytime"  >
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+
+          </mat-form-field>
+
+          <mat-form-field class="row-full-width" *ngIf="chargeForm.get('isStart').value=='false'">  
+            <input matInput [matDatepicker]="dp1" placeholder="结束日期" formControlName="endtime"   >
+            <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+            <mat-datepicker #dp1></mat-datepicker>
+          </mat-form-field>
+
+
+          <div *ngIf="chargeForm.errors?.identityRevealed && (chargeForm.touched || chargeForm.dirty)" class="cross-validation-error-message alert alert-danger">
+            必须选择班级
+         </div>
+         <div *ngIf="chargeForm.errors?.startTimeValidator && (chargeForm.touched || chargeForm.dirty)" class="cross-validation-error-message alert alert-danger">
+            必须选择限缴日期和结束日期
+         </div>
+    <button mat-button type="submit" [disabled]="!chargeForm.valid">Submit</button>
+    </form>
+    
+    <p>{{chargeForm.value | json }}</p>
+    <p>{{chargeForm.valid}}</p>
+    </div>
+    </div>
+    </div>

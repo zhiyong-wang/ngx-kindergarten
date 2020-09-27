@@ -1,0 +1,52 @@
+
+<table mat-table [dataSource]="charges" >
+    <!-- Position Column -->
+    <ng-container matColumnDef="No">
+      <th mat-header-cell *matHeaderCellDef>序号</th>
+      <td mat-cell *matCellDef="let element let i=index"> {{i+1}} </td>
+    </ng-container>  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>名称</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="charge">
+      <th mat-header-cell *matHeaderCellDef>缴费标准 </th>
+      <td mat-cell *matCellDef="let element">{{element.charge}} </td>
+    </ng-container>  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="isAll">
+      <th mat-header-cell *matHeaderCellDef> 缴费范围 </th>
+      <td mat-cell *matCellDef="let element"> {{element.isAll}} </td>
+    </ng-container>  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="paytime">
+      <th mat-header-cell *matHeaderCellDef> 截止时间 </th>
+      <td mat-cell *matCellDef="let element"> {{element.paytime}} </td>
+    </ng-container>
+    <ng-container matColumnDef="endtime">
+      <th mat-header-cell *matHeaderCellDef> 结束时间 </th>
+      <td mat-cell *matCellDef="let element"> {{element.endtime}} </td>
+    </ng-container>
+    <ng-container matColumnDef="isStart">
+        <th mat-header-cell *matHeaderCellDef> 是否是入园缴费项目 </th>
+        <td mat-cell *matCellDef="let element"> {{element.isStart}} </td>
+      </ng-container>
+   
+
+    <ng-container matColumnDef="id" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu" xPosition="before" > 
+          <button mat-menu-item>详情</button>
+          <button mat-menu-item (click)="goToModify(element.id)" >修改</button>
+          <button mat-menu-item (click)="deleteCharge(element.id)">删除</button>
+        </mat-menu></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <button mat-button (click)="getCharges()">get</button>

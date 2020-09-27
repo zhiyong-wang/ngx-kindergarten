@@ -1,0 +1,66 @@
+.main {
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.view{
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  color: rgba(0,0,0,.87);
+  font-weight: 400;
+  border: 1px solid rgba(0,0,0,.03);
+  box-shadow: 0 2px 2px rgba(0,0,0,.24),0 0 2px rgba(0,0,0,.12);
+  margin-top: 15px;
+  width:860px;
+  }
+  
+
+.view-title{
+height: 25px;
+color: rgba(0,0,0,.54);
+background: rgba(0,0,0,.03);
+align-content: center;
+align-items: center;
+display: flex;
+justify-content: flex-start;
+padding: 8px 20px;
+font-weight: 600;
+font-size: 20px;
+}
+
+.view-content{
+
+    color: rgba(0,0,0,.54);
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+    }
+.form-content{
+   
+    color: rgba(0,0,0,.54);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+
+    }
+.row-full-width{
+      width:100%
+    }
+  .row{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    width: 100%;
+
+  }
+
+
+
+
+

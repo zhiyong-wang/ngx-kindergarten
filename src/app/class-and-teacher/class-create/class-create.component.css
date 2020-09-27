@@ -1,0 +1,10 @@
+.student{
+    display:flex;
+    flex-direction: row;
+}
+.nan{color: cornflowerblue;}
+.nv{color:pink}
+.example-card {
+    margin: 10px;
+    width: 400px;
+  }

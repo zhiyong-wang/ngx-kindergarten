@@ -1,0 +1,15 @@
+.main {
+    width:100%;
+    display:flex;
+    justify-content: center;
+  }
+  
+  .view{
+    font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    color: rgba(0,0,0,.87);
+    font-weight: 400;
+    border: 1px solid rgba(0,0,0,.03);
+    box-shadow: 0 2px 2px rgba(0,0,0,.24),0 0 2px rgba(0,0,0,.12);
+    margin-top: 15px;
+    width:860px;
+    }

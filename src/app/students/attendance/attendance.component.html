@@ -1,0 +1,32 @@
+<p>attendance works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="attendanceForm">
+<mat-form-field class="row-full-width">  
+    <input matInput [matDatepicker]="dp" placeholder="日期"  formControlName="selectDate"  required >
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+   
+  </mat-form-field>
+
+  <mat-form-field class="row-full-width">   
+    <mat-select placeholder="班级" formControlName="selectClass" required>
+    <mat-option value={{item.id}} *ngFor="let item of classes">{{item.name}}</mat-option>
+    </mat-select>
+  
+</mat-form-field>
+<button mat-button type="submit" [disabled]="!attendanceForm.valid">Submit</button>
+</form>
+
+{{attendanceForm.value|json}}
+<mat-grid-list cols="4" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let student of studentsInClass"> 
+     <div> <h4  >{{student.name}}</h4></div>
+     <div> <mat-button-toggle-group name="student.attendance" [(ngModel)]="student.attendance">
+        <mat-button-toggle value="yes">出勤</mat-button-toggle>
+        <mat-button-toggle value="no">缺勤</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <button mat-button type="button" (click)="saveAttendance()">保存</button>
+{{studentsInClass|json}}
+ 

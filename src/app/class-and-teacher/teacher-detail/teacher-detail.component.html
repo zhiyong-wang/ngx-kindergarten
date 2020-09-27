@@ -1,0 +1,72 @@
+<p>teacher-detail works!</p>
+<div class="main">
+    <div class="view">
+       <div class="view-title">教师信息 </div>
+    
+       <div  class="view-content">
+    
+        <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()" class="form-content">
+    
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="姓名"  formControlName="name" required>
+            <mat-error *ngIf="teacherForm.get('name').invalid">必须填写姓名！</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="性别"  formControlName="sex" required>
+            <mat-option value='男'>男</mat-option>
+            <mat-option value='女'>女</mat-option>
+            </mat-select>
+            <mat-error *ngIf="teacherForm.get('sex').invalid">必须选择性别！</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="row-full-width">
+            <input matInput placeholder="身份证号码"  formControlName="id_number" required >
+            <mat-error *ngIf="teacherForm.get('id_number').invalid">{{getErrorMessage("id_number")}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="row-full-width">
+            <input matInput placeholder="联系电话"  formControlName="phone" required>
+            <mat-error *ngIf="teacherForm.get('phone').invalid">{{getErrorMessage("phone")}}</mat-error>
+        </mat-form-field>  
+    
+
+        <mat-form-field class="row-full-width">
+            <mat-select placeholder="学历"  formControlName="educational" required>       
+                <mat-option value="本科" >本科</mat-option >
+                <mat-option value="专科" >专科</mat-option >
+                <mat-option value="中专" >中专</mat-option >
+                <mat-option value="研究生" >研究生</mat-option >  
+                <mat-option value="其他" >其他</mat-option >
+                </mat-select>
+            <mat-error *ngIf="teacherForm.get('educational').invalid">必须填写学历！</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="row-full-width">     
+           <input matInput placeholder="毕业院校"  formControlName="university" required>
+           <mat-error *ngIf="teacherForm.get('university').invalid">必须填写毕业院校！</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="row-full-width">     
+            <input matInput placeholder="专业"  formControlName="specialty" required>
+            <mat-error *ngIf="teacherForm.get('specialty').invalid">必须填写专业！</mat-error>
+         </mat-form-field>
+       
+
+    
+        <mat-form-field class="row-full-width">  
+            <input matInput [matDatepicker]="dp" placeholder="入园日期" formControlName="enter_date"  required >
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+            <mat-error *ngIf="teacherForm.get('enter_date').invalid">必须填写入园日期！</mat-error>
+          </mat-form-field>
+
+    <button type="submit" [disabled]="!teacherForm.valid">Submit</button>
+    </form>
+    
+    <p>{{teacherForm.value | json }}</p>
+    <p>{{teacherForm.valid}}</p>
+    </div>
+    </div>
+    </div>

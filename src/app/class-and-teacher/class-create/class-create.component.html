@@ -1,0 +1,101 @@
+<p>class-create works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" >
+<mat-horizontal-stepper linear  #stepper>
+
+    <mat-step formGroupName="classGroup" [stepControl]="formGroup.get('classGroup')">
+        <ng-template matStepLabel>输入班级名称</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="班级名称" formControlName="className" required>
+          <mat-error *ngIf="formGroup.get('classGroup').get('className').invalid">{{getErrorMessage("className")}}</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext  type="button">下一步</button>
+        </div>
+    </mat-step>
+    <mat-step optional>
+
+        <ng-template matStepLabel>选择教师</ng-template>
+        <mat-form-field>   
+          <mat-select placeholder="主管教师"  formControlName="primaryTeacher" >
+          <mat-option value={{item.id}} *ngFor="let item of teachers">{{item.name}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field>   
+        <mat-select placeholder="协管老师"  formControlName="other_teachers"  multiple>
+        <mat-option value={{item.id}} *ngFor="let item of teachers">{{item.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious  type="button">上一步</button>
+          <button mat-button matStepperNext  type="button">下一步</button>
+        </div>
+
+    </mat-step>
+
+    <mat-step >
+
+      <ng-template matStepLabel>加入学生</ng-template>
+      <div class="student">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{formGroup.get('classGroup').get('className').value}}</mat-card-title>
+          <mat-card-subtitle>已选择男生  名，女生  名，平均年龄 岁</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <mat-grid-list cols="3" rowHeight="3:1">
+              <mat-grid-tile *ngFor="let student of studentsInClass">
+                <h3  [ngClass]="student.sex=='男'?'nan':'nv'" (click)="removeFromClass(student)">{{student.name}}</h3>
+                <p>{{student.age}} </p>
+              </mat-grid-tile>
+            </mat-grid-list>
+            </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>移除全部</button>
+        </mat-card-actions>
+      </mat-card>
+
+
+      <mat-card class="example-card">
+          <mat-card-header>
+              <mat-card-title>尚未分班的学生</mat-card-title>
+              <mat-card-subtitle>男生  名，女生  名，平均年龄 岁</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+            <mat-grid-list cols="3" rowHeight="3:1">
+              <mat-grid-tile *ngFor="let student of studentsNoClass">
+                <h3  [ngClass]="student.sex=='男'?'nan':'nv'"  (click)="addToClass(student)">{{student.name}}</h3>
+                <p>{{student.age}} </p>
+              </mat-grid-tile>
+            </mat-grid-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>全部加入</button>
+            </mat-card-actions>
+          </mat-card>
+          </div>
+       
+          <div>
+            <button mat-button matStepperPrevious  type="button">上一步</button>
+            <button mat-button matStepperNext  type="button">下一步</button>
+          </div>
+
+      </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>完成</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious  type="button">上一步</button>
+        <button mat-button (click)="stepper.reset()">重新设置</button>
+        <button mat-button type="submit" >完成</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</form>
+
+<p>{{formGroup.value | json }}</p>

@@ -1,0 +1,93 @@
+ 
+<form (ngSubmit)="onSubmit()" [formGroup]="tuitionForm">
+    <mat-form-field class="row-full-width">  
+        <input matInput [matDatepicker]="dp" placeholder="选择月份"  formControlName="selectMonth"  required >
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp
+            startView="year"
+            (yearSelected)="chosenYearHandler($event)"
+            (monthSelected)="chosenMonthHandler($event, dp)"
+            panelClass="example-month-picker">
+        </mat-datepicker>
+       
+      </mat-form-field>
+    
+      <mat-form-field class="row-full-width">   
+        <mat-select placeholder="选择班级" formControlName="selectClass" required>
+        <mat-option value={{item.id}} *ngFor="let item of classes">{{item.name}}</mat-option>
+        </mat-select>
+      
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!tuitionForm.valid">Submit</button>
+    </form>
+    {{tuitionForm.value|json}}
+    {{countOfWorkDays}}
+
+<table mat-table *ngIf="dataSource" [dataSource]="dataSource">
+<!-- Position Column -->
+<ng-container matColumnDef="position">
+  <th mat-header-cell *matHeaderCellDef> 序号 </th>
+  <td mat-cell *matCellDef="let element let i=index"> {{i+1}} </td>
+</ng-container>
+
+<!-- Name Column -->
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef> 姓名 </th>
+  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+</ng-container>
+
+<!-- Weight Column -->
+
+<ng-container matColumnDef="workdays">
+  <th mat-header-cell *matHeaderCellDef> 应出勤天数 </th>
+  <td mat-cell *matCellDef="let element"> {{countOfWorkDays}} </td>
+</ng-container>
+
+<ng-container matColumnDef="countOfAbsence">
+  <th mat-header-cell *matHeaderCellDef>缺勤天数 </th>
+  <td mat-cell *matCellDef="let element"> {{element.countOfAbsence}} </td>
+</ng-container>
+
+<ng-container matColumnDef="tuition">
+  <th mat-header-cell *matHeaderCellDef>学费 </th>
+  <td mat-cell *matCellDef="let element"> {{element.tuition}} </td>
+</ng-container>
+
+<ng-container matColumnDef="meals">
+  <th mat-header-cell *matHeaderCellDef>餐费 </th>
+  <td mat-cell *matCellDef="let element"> {{meals}} </td>
+</ng-container>
+
+<ng-container matColumnDef="tuitionOfBack">
+  <th mat-header-cell *matHeaderCellDef>应退学费 </th>
+  <td mat-cell *matCellDef="let element"> {{element.tuitionOfBack}} </td>
+</ng-container>
+
+<ng-container matColumnDef="mealsOfBack">
+  <th mat-header-cell *matHeaderCellDef>应退餐费 </th>
+  <td mat-cell *matCellDef="let element"> {{element.mealsOfBack}} </td>
+</ng-container>
+
+<ng-container matColumnDef="shouldPay">
+  <th mat-header-cell *matHeaderCellDef>应交费用 </th>
+  <td mat-cell *matCellDef="let element"> {{element.shouldPay}} </td>
+</ng-container>
+
+<ng-container matColumnDef="paid">
+  <th mat-header-cell *matHeaderCellDef>已交费用 </th>
+  <td mat-cell *matCellDef="let element"> {{element.paid}} </td>
+</ng-container>
+
+<ng-container matColumnDef="do" stickyEnd>
+  <th mat-header-cell *matHeaderCellDef>操作</th>
+  <td mat-cell *matCellDef="let element"> 
+          <button mat-button *ngIf="element.paid==0" (click)="saveTuitionPaid(element)">收费</button>
+          <button mat-button *ngIf="element.paid!=0"  (click)="deleteTuitionPaid(element)">回退</button>
+          <button mat-button *ngIf="element.paid!=0">打印收据</button>
+    </td>
+</ng-container>
+
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
