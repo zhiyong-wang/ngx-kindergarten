@@ -1,22 +1,23 @@
-<p>attendance works!</p>
-<form (ngSubmit)="onSubmit()" [formGroup]="attendanceForm">
+<div class="title">点名信息查询</div>
+<mat-divider></mat-divider>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="attendanceForm" class="select">
+  <mat-form-field class="row-full-width">   
+    <mat-select placeholder="班级" formControlName="selectClass" required>
+    <mat-option value={{item.id}} *ngFor="let item of classes">{{item.name}}</mat-option>
+    </mat-select>  
+</mat-form-field>
+
 <mat-form-field class="row-full-width">  
-    <input matInput [matDatepicker]="dp" placeholder="日期"  formControlName="selectDate"  required >
+    <input matInput [matDatepicker]="dp" placeholder=""  formControlName="selectDate"  required >
     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
     <mat-datepicker #dp></mat-datepicker>
    
   </mat-form-field>
-
-  <mat-form-field class="row-full-width">   
-    <mat-select placeholder="班级" formControlName="selectClass" required>
-    <mat-option value={{item.id}} *ngFor="let item of classes">{{item.name}}</mat-option>
-    </mat-select>
-  
-</mat-form-field>
-<button mat-button type="submit" [disabled]="!attendanceForm.valid">Submit</button>
+<button mat-button type="submit" [disabled]="!attendanceForm.valid">确定</button>
 </form>
 
-{{attendanceForm.value|json}}
+<div class="content">
 <mat-grid-list cols="4" rowHeight="3:1">
     <mat-grid-tile *ngFor="let student of studentsInClass"> 
      <div> <h4  >{{student.name}}</h4></div>
@@ -27,6 +28,7 @@
     </div>
     </mat-grid-tile>
   </mat-grid-list>
+</div>
   <button mat-button type="button" (click)="saveAttendance()">保存</button>
-{{studentsInClass|json}}
+
  

@@ -1,7 +1,9 @@
-<p>student-details works!</p>
-<div class="main">
-<div class="view">
-   <div class="view-title">入园登记 </div>
+
+<div class="title">入园登记</div>
+<mat-divider></mat-divider>
+<div class="content">
+    <div class="view">
+   <div class="view-title">学生信息单</div>
 
    <div  class="view-content">
 
@@ -105,9 +107,7 @@
   </div>
 <button type="submit" [disabled]="!studentForm.valid">Submit</button>
 </form>
-
-<p>{{studentForm.value | json }}</p>
-<p>{{studentForm.valid}}</p>
 </div>
+
 </div>
 </div>

@@ -13,8 +13,8 @@ const ConfigRoutes: Routes = [
 
     { path: '',  component: HolidayComponent },
     { path: 'holiday', component: HolidayComponent},
-    { path: 'charge-detail/:id', component: ChargeDetailComponent},
-    { path: 'charge-detail', component: ChargeDetailComponent},
+    { path: 'chargeDetail/:id', component: ChargeDetailComponent},
+    { path: 'chargeDetail', component: ChargeDetailComponent},
     { path: 'charge', component: ChargeListComponent},
 
 ]

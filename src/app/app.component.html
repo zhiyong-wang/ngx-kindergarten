@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<mat-toolbar class="toolbar">
+    <span>My Application</span>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" >
+    <mat-sidenav mode="side"   class=" example-sidenav " opened>
+        <app-left-menu></app-left-menu>
+    </mat-sidenav>
+    <mat-sidenav-content  class="example-sidenav-content">
+        <router-outlet> </router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

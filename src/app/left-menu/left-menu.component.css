@@ -1,0 +1,32 @@
+
+.mat-list-icon {
+    color: rgba(0, 0, 0, 0.54);
+  }
+.menu-list{
+
+  height:680px;
+  overflow-y:scroll
+}
+.list-item{
+  height: 40px !important;
+  color:#444e31
+
+}
+
+::-webkit-scrollbar-track
+  { 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #EBF0F4;
+  }
+  
+::-webkit-scrollbar
+  {
+    width: 0px;
+    
+  }
+  
+::-webkit-scrollbar-thumb
+  {
+    background-color: red;
+   
+  }

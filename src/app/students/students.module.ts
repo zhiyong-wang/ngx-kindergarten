@@ -4,7 +4,10 @@ import { FormsModule }    from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -15,6 +18,7 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentDetailsComponent } from './student-details/student-details.component';
@@ -25,9 +29,9 @@ import { AttendanceListComponent } from './attendance-list/attendance-list.compo
 
 
 
-
 @NgModule({
   declarations: [
+
     StudentDetailsComponent,
     StudentsListComponent,
     StudentsComponent,
@@ -41,17 +45,22 @@ import { AttendanceListComponent } from './attendance-list/attendance-list.compo
     StudentsRoutingModule,
     ReactiveFormsModule,
 
+
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,
+    MatSelectModule, 
     MatGridListModule,
     MatDatepickerModule,
     MatMomentDateModule,
     MatMenuModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDividerModule
+
   ]
 })
 export class StudentsModule { }

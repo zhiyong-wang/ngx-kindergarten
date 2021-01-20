@@ -12,6 +12,7 @@ const studentsRoutes: Routes = [
   children: [
 
     { path: '',  component: StudentsListComponent },
+    { path: 'list',  component: StudentsListComponent },
     { path: 'detail/:id', component: StudentDetailsComponent},
     { path: 'detail', component: StudentDetailsComponent},
     { path: 'attendance', component: AttendanceComponent},

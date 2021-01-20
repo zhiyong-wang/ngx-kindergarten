@@ -12,8 +12,9 @@ const ClassAndTeacherRoutes: Routes = [
   children: [
 
     { path: '',  component: TeacherListComponent },
-    { path: 'detail/:id', component: TeacherDetailComponent},
-    { path: 'detail', component: TeacherDetailComponent},
+    { path: 'teacherList',  component: TeacherListComponent },
+    { path: 'teacherDetail/:id', component: TeacherDetailComponent},
+    { path: 'teacherDetail', component: TeacherDetailComponent},
     { path:'classManage', component: ClassManageComponent},
     { path:'classCreate', component: ClassCreateComponent}
 ]

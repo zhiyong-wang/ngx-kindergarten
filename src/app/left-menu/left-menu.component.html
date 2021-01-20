@@ -1,0 +1,29 @@
+   <mat-nav-list  class="menu-list" >
+  <h3 mat-subheader>学生管理</h3>
+  <mat-list-item *ngFor="let st of student_manage"  class="list-item">
+
+      <mat-icon mat-list-icon>info</mat-icon>
+
+   <a matLine [href]="st.href">{{ st.name }}</a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>收费管理</h3>
+  <mat-list-item *ngFor="let ch of charge_manage" class="list-item">
+   <mat-icon mat-list-icon>info</mat-icon>
+    <a matLine [href]="ch.href" >{{ ch.name }}</a>
+</mat-list-item>
+<mat-divider></mat-divider>
+  <h3 mat-subheader>班级与教师管理</h3>
+  <mat-list-item *ngFor="let cl of class_manage"  class="list-item">
+   <mat-icon mat-list-icon>info</mat-icon>
+    <a matLine [href]="cl.href">{{ cl.name }}</a>
+    
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>设置</h3>
+  <mat-list-item *ngFor="let co of config_manage"  class="list-item">
+   <mat-icon mat-list-icon>info</mat-icon>
+    <a matLine [href]="co.href">{{ co.name }}</a>
+   
+  </mat-list-item>
+</mat-nav-list>
