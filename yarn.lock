@@ -134,10 +134,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/cdk@^10.2.2":
-  version "10.2.2"
-  resolved "https://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-10.2.2.tgz#429816d2f8d15d1da99b85ee6810d54bf46e3d05"
-  integrity sha1-QpgW0vjRXR2pm4XuaBDVS/RuPQU=
+"@angular/cdk@^11.1.1":
+  version "11.1.1"
+  resolved "https://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-11.1.1.tgz#87cf1ff8eef898296129742b503bff1f979b7bc1"
+  integrity sha1-h88f+O74mClhKXQrUDv/H5ebe8E=
   dependencies:
     tslib "^2.0.0"
   optionalDependencies:
@@ -234,17 +234,17 @@
   resolved "https://registry.npm.taobao.org/@angular/language-service/download/@angular/language-service-11.1.1.tgz#f43e9541933efe5102f9ea5ad372d8d5255f9300"
   integrity sha1-9D6VQZM+/lEC+epa03LY1SVfkwA=
 
-"@angular/material-moment-adapter@^10.2.2":
-  version "10.2.2"
-  resolved "https://registry.npm.taobao.org/@angular/material-moment-adapter/download/@angular/material-moment-adapter-10.2.2.tgz#52ef87dcfeed236c6b68b352d1c1f2743298874f"
-  integrity sha1-Uu+H3P7tI2xraLNS0cHydDKYh08=
+"@angular/material-moment-adapter@^11.1.1":
+  version "11.1.1"
+  resolved "https://registry.npm.taobao.org/@angular/material-moment-adapter/download/@angular/material-moment-adapter-11.1.1.tgz#2eb53cf2f24d1d5adf7a2ced3653bc1c8e5e8682"
+  integrity sha1-LrU88vJNHVrfeiztNlO8HI5ehoI=
   dependencies:
     tslib "^2.0.0"
 
-"@angular/material@^10.2.2":
-  version "10.2.2"
-  resolved "https://registry.npm.taobao.org/@angular/material/download/@angular/material-10.2.2.tgz#224864e3c280ee2e8f0ccf28574c65d788799782"
-  integrity sha1-Ikhk48KA7i6PDM8oV0xl14h5l4I=
+"@angular/material@^11.1.1":
+  version "11.1.1"
+  resolved "https://registry.npm.taobao.org/@angular/material/download/@angular/material-11.1.1.tgz#06104a6e456c3e56a1375fbb2890bed5d25d634b"
+  integrity sha1-BhBKbkVsPlahN1+7KJC+1dJdY0s=
   dependencies:
     tslib "^2.0.0"
 
