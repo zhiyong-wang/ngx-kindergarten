@@ -40,8 +40,11 @@
     <ng-container *ngFor="let item of dateCol" [matColumnDef]="item" sticky>
       <th mat-header-cell *matHeaderCellDef>{{item}}{{weekday[item-1]}}</th>
       <td mat-cell *matCellDef="let element" >
-        <div *ngIf="element.absence.includes(item);else elseBlock" color='red'>x</div> </td>
-        <ng-template #elseBlock>o</ng-template>
+        <div *ngIf="element.absence.includes(item);else elseBlock" color='red'>x</div> 
+        <ng-template #elseBlock>          
+        <div *ngIf="isHoliday(item);else elseBlock1">-</div>
+        <ng-template #elseBlock1>o</ng-template>
+      </ng-template></td>
     </ng-container>
 
   

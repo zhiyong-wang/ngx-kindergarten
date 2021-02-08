@@ -49,6 +49,7 @@ export class TuitionComponent implements OnInit {
     const ctrlValue = this.tuitionForm.get('selectMonth').value;
     ctrlValue.year(normalizedYear.year());
     this.tuitionForm.get('selectMonth').setValue(ctrlValue);
+    this.getCountOfWorkDays(ctrlValue)
   }
 
   chosenMonthHandler(normlizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
@@ -115,6 +116,7 @@ export class TuitionComponent implements OnInit {
                 student.mealsOfBack=-(this.mealsOfDay*student.countOfAbsence)
                 if(student.mealsOfBack>student.meals){student.mealsOfBack=student.meals}
                 if(student.countOfAbsence>this.countOfWorkDays){
+                  console.log('countOfWorkDays'+this.countOfWorkDays)
                   student.tuitionOfBack=-student.tuition/2
                 }
                 else{student.tuitionOfBack=0}  
@@ -134,13 +136,7 @@ export class TuitionComponent implements OnInit {
   dataSource
   displayedColumns = ['position', 'name','workdays','countOfAbsence','tuition','meals','tuitionOfBack','mealsOfBack','shouldPay','paid','do']
   meals=310
-
   mealsOfDay=14.5
-
-
-
-
-
 
 getCountOfWorkDays(selectDate):void{
   let date=moment(selectDate)
@@ -246,6 +242,8 @@ deleteTuitionPaid(student):void{
 
   ngOnInit(): void {
     this.dataService.getClasses().subscribe(data=>this.classes=data)
+    const ctrlValue = this.tuitionForm.get('selectMonth').value;
+    this.getCountOfWorkDays(ctrlValue)
 
   }
 

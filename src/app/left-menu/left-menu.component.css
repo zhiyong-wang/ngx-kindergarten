@@ -7,10 +7,15 @@
   height:680px;
   overflow-y:scroll
 }
-.list-item{
-  height: 40px !important;
-  color:#444e31
 
+.list-top{
+  height: 35px !important;
+
+}
+.list-item{
+  height: 30px !important;
+  color:#444e31;
+  font-size: small;
 }
 
 ::-webkit-scrollbar-track

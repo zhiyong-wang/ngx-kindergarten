@@ -54,7 +54,7 @@ export class AttendanceListComponent implements OnInit {
    
   }
   
-
+holidayOfMonth=[]
 async onSubmit():Promise<void>{
   let classId=this.attendanceForm.get("selectClass").value
   let selectDate=moment(this.attendanceForm.get("selectMonth").value)
@@ -64,7 +64,17 @@ async onSubmit():Promise<void>{
  console.log(startDate)
  console.log(endDate)
  let studentsInClass
-await  this.dataService.getStudents({"classId":classId})
+  this.holidayOfMonth=[]
+  await this.dataService.getHolidayOfMonth(startDate,endDate)
+    .subscribe(data => {
+      console.log(data)
+      for(let d of data){
+      this.holidayOfMonth.push(d.date)}
+    }
+
+    )
+console.log(this.holidayOfMonth)
+  await  this.dataService.getStudents({"classId":classId})
       .subscribe(data=>{
       //  console.log(data)
         studentsInClass=data   
@@ -89,7 +99,8 @@ await  this.dataService.getStudents({"classId":classId})
   dateCol:string[]=[]
   displayedColumns: string []
   week=['日','一','二','三','四','五','六']
-   weekday=[]
+  weekday=[]
+
   setDateCol(date:Moment):void{
     this.dateCol=[]
     this.weekday=[]
@@ -110,6 +121,15 @@ await  this.dataService.getStudents({"classId":classId})
 
 
   }
+
+  isHoliday(ri):boolean{
+    let selectDate=moment(this.attendanceForm.get("selectMonth").value)
+    let year=selectDate.year()
+    let month=selectDate.month()+1
+    let date=moment().set({"year":year,"month":month-1,"date":ri,"hour":0,"minute":0,"second":0,"millisecond":0})
+    return  ((moment(date).day()==0||moment(date).day()==6)&&!this.holidayOfMonth.includes(moment(date).valueOf()))||(moment(date).day()!=0&&moment(date).day()!=6&&this.holidayOfMonth.includes(moment(date).valueOf()))
+ }
+
 
   constructor(private dataService:DataService) { }
   ngOnInit(): void {

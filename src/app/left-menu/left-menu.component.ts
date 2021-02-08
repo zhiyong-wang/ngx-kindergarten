@@ -77,5 +77,4 @@ export class LeftMenuComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
